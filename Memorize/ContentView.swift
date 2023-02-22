@@ -25,28 +25,38 @@ struct ContentView: View {
             Spacer()
             //底栏
             HStack{
-                Button{
-                    if count<emojis.count{
-                        self.count+=1
-                    }
-                } label: {
-                    Image(systemName: "plus.circle")
-                    
-                }
+                remove
                 Spacer()
-                Button(action: {
-                    if count>1{
-                        self.count-=1
-                    }
-                }, label: {Image(systemName: "minus.circle")}
-                )
+                add
+                
             }
         }.padding()
         
     }
-func myFunction(){
     
-}
+    var remove:some View {
+        Button(action: {
+            if count>1{
+                self.count-=1
+            }
+        }, label: {Image(systemName: "minus.circle")}
+        )
+    }
+    
+    var add: some View {
+        Button{
+            if count<emojis.count{
+                self.count+=1
+            }
+        } label: {
+            Image(systemName: "plus.circle")
+            
+        }
+    }
+    
+    func myFunction(){
+        
+    }
 }
 struct MyCardView: View{
     var emoji: String
